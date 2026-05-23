@@ -18,7 +18,9 @@ export const authAPI = {
   logout:         ()  => api.get('/auth/logout'),
   profile:        ()  => api.get('/auth/profile'),
   updateProfile:  (d) => api.put('/auth/profile', d),
-  forgotPassword: (d, frontendUrl) => api.post(`/auth/password/forgot?frontendUrl=${encodeURIComponent(frontendUrl)}`, d),
+  forgotPassword: (d, frontendUrl) => api.post('/auth/password/forgot', d, { 
+    params: { frontendUrl } 
+  }),
   resetPassword:  (token, d) => api.put(`/auth/password/reset/${token}`, d),
   updatePassword: (d) => api.put('/auth/password/update', d),
 };
